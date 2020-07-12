@@ -1,2 +1,2 @@
 # Hailon
-A repository for mobilce game "Halion" by Clovermike
+A repository for mobile game "Halion" by Clovermike
