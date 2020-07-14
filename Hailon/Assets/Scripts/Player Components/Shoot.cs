@@ -9,12 +9,12 @@ public class Shoot : MonoBehaviour
     public new Camera camera;
     public GameObject ballPrefab;
     public LineRenderer lineRenderer;
-    public Rigidbody2D ballRigidbody;
     public float power = 10f;
     public float maxDrag = 5f;
 
     GameObject newBall;
     Touch touch;
+    Rigidbody2D ballRigidbody;
     Vector3 dragStartPosition, dragReleasePosition, draggingPosition;
 
     void Start()
@@ -24,6 +24,8 @@ public class Shoot : MonoBehaviour
             Debug.Log("You didn't set up line renderer");
             lineRenderer = GetComponent<LineRenderer>();
         }
+
+        StartCoroutine(SetUpNewBall());
     }
 
     void Update()
