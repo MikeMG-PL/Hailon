@@ -34,15 +34,15 @@ public class Controlable : MonoBehaviour
     void ProperXPOS()
     {
         if (transform.position.x > 2.2f)
-            transform.position = new Vector2(2.2f, -4.95f);
+            transform.position = new Vector2(2.2f, -4.35f);
 
         if (transform.position.x < -2.2f)
-            transform.position = new Vector2(-2.2f, -4.95f);
+            transform.position = new Vector2(-2.2f, -4.35f);
     }
 
     void ProperYPOS()
     {
-        Vector2 position = new Vector2(transform.position.x, -4.95f);
+        Vector2 position = new Vector2(transform.position.x, -4.35f);
         transform.position = position;
     }
 

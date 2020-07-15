@@ -51,7 +51,7 @@ public class Shoot : MonoBehaviour
             }
         }
 
-        if(newBall != null)
+        if (newBall != null)
             newBall.transform.position = pos;
     }
 
@@ -82,13 +82,15 @@ public class Shoot : MonoBehaviour
         Vector3 force = dragStartPosition - dragReleasePosition;
         Vector3 clampedForce = Vector3.ClampMagnitude(force, maxDrag) * power;
 
-        newBall.GetComponent<Rigidbody2D>().isKinematic = false;
-        ballRigidbody.AddForce(clampedForce, ForceMode2D.Impulse);
-        ballRigidbody.constraints = RigidbodyConstraints2D.None;
-        ballRigidbody.GetComponent<CircleCollider2D>().isTrigger = false;
-        newBall.transform.SetParent(null);
-        newBall = null;
-
+        if (newBall != null)
+        {
+            newBall.GetComponent<Rigidbody2D>().isKinematic = false;
+            ballRigidbody.AddForce(clampedForce, ForceMode2D.Impulse);
+            ballRigidbody.constraints = RigidbodyConstraints2D.None;
+            ballRigidbody.GetComponent<CircleCollider2D>().isTrigger = false;
+            newBall.transform.SetParent(null);
+            newBall = null;
+        }
         StartCoroutine(SetUpNewBall());
     }
 
