@@ -245,8 +245,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02760159, y: 1.1007799}
-  m_Size: {x: 32.97357, y: 21.466309}
+  m_Offset: {x: -0.02760159, y: -3.5}
+  m_Size: {x: 37.51, y: 37.3}
   m_Direction: 1
 --- !u!114 &7588020227435461971
 MonoBehaviour:
@@ -278,5 +278,3 @@ MonoBehaviour:
   lineRenderer: {fileID: 7975385192167797066}
   power: 10
   maxDrag: 3
-  antiSuicideChecker: {fileID: 7022149015028438258, guid: ffb9c0004808fe0428fad1b280caa631,
-    type: 3}
