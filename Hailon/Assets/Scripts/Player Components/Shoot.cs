@@ -50,15 +50,13 @@ public class Shoot : MonoBehaviour
                 dragging = false;
             }
         }
+
+        if(newBall != null)
+            newBall.transform.position = pos;
     }
 
     void DragStart()
     {
-
-        //dragStartPosition = camera.ScreenToWorldPoint(touch.position);
-        //dragStartPosition.z = 0;
-
-
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, dragStartPosition);
     }
@@ -71,17 +69,14 @@ public class Shoot : MonoBehaviour
 
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(1, draggingPosition);
-
     }
 
     void DragRelease()
     {
         lineRenderer.positionCount = 0;
 
-
         dragReleasePosition = camera.ScreenToWorldPoint(touch.position);
         dragReleasePosition.z = 0;
-
 
 
         Vector3 force = dragStartPosition - dragReleasePosition;
@@ -92,9 +87,9 @@ public class Shoot : MonoBehaviour
         ballRigidbody.constraints = RigidbodyConstraints2D.None;
         ballRigidbody.GetComponent<CircleCollider2D>().isTrigger = false;
         newBall.transform.SetParent(null);
+        newBall = null;
 
         StartCoroutine(SetUpNewBall());
-
     }
 
     void TouchSet()
@@ -117,7 +112,6 @@ public class Shoot : MonoBehaviour
             cooldown = true;
             yield return new WaitForSeconds(0.5f);
             newBall = Instantiate(ballPrefab, gameObject.transform);
-            newBall.transform.position = pos;
             newBall.GetComponent<Rigidbody2D>().isKinematic = true;
             ballRigidbody = newBall.GetComponent<Rigidbody2D>();
             ballRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
