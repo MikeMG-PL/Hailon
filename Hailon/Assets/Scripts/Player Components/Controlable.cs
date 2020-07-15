@@ -7,41 +7,52 @@ public class Controlable : MonoBehaviour
     Vector3 touchPosition;
     Touch touch;
     RaycastHit2D hit;
+    bool touchStarted;
 
     void Update()
     {
         ProperYPOS();
         ProperXPOS();
+        TouchSet();
 
-        if (Input.touchCount > 0)
+        if (hit.collider == GetComponent<CapsuleCollider2D>())
         {
-            touch = Input.GetTouch(0);
-            touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            touchPosition.z = 0;
-            
-            hit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
-            if (hit.collider == gameObject.GetComponent<CapsuleCollider2D>())
-            {
+            if (touch.phase == TouchPhase.Began)
+                touchStarted = true;
+
+            if (touchStarted == true)
                 transform.position = new Vector2(touchPosition.x, touchPosition.y);
-                ProperYPOS();
-                ProperXPOS();
-            }
-                
+            
+            ProperYPOS();
+            ProperXPOS();
+
+            if (touch.phase == TouchPhase.Ended)
+                touchStarted = false;
         }
     }
 
     void ProperXPOS()
     {
         if (transform.position.x > 2.2f)
-            transform.position = new Vector2(2.2f, -4.339f);
+            transform.position = new Vector2(2.2f, -4.95f);
 
         if (transform.position.x < -2.2f)
-            transform.position = new Vector2(-2.2f, -4.339f);
+            transform.position = new Vector2(-2.2f, -4.95f);
     }
 
     void ProperYPOS()
     {
-        Vector2 position = new Vector2(transform.position.x, -4.339f);
+        Vector2 position = new Vector2(transform.position.x, -4.95f);
         transform.position = position;
+    }
+
+    void TouchSet()
+    {
+        if (Input.touchCount == 0) return;
+
+        touch = Input.GetTouch(0);
+        touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+        touchPosition.z = 0;
+        hit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
     }
 }

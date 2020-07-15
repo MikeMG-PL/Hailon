@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 8634718317706332902}
   - component: {fileID: 3382483034612405700}
   - component: {fileID: 7588020227435461971}
+  - component: {fileID: 7488511152284347813}
   m_Layer: 0
-  m_Name: Player
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: 4a310ca922505ca48bb52325fdc692d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
@@ -210,7 +211,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 6
+  m_Constraints: 7
 --- !u!68 &8634718317706332902
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -227,11 +228,10 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -2.005519, y: -5.0177794}
-  - {x: 1.9920299, y: -4.963825}
-  - {x: 5.026977, y: -0.9442061}
-  - {x: -4.9816046, y: -0.9711835}
-  - {x: -1.9736351, y: -4.9773145}
+  - {x: -4.937528, y: 0.9635183}
+  - {x: 5.002226, y: 0.93928516}
+  - {x: 1.9385943, y: 4.997998}
+  - {x: -2.0105016, y: 5.0101137}
 --- !u!70 &3382483034612405700
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -245,8 +245,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.027601022, y: 0.8741248}
-  m_Size: {x: 16.84, y: 19.2}
+  m_Offset: {x: -0.02760159, y: 1.1007799}
+  m_Size: {x: 32.97357, y: 21.466309}
   m_Direction: 1
 --- !u!114 &7588020227435461971
 MonoBehaviour:
@@ -260,3 +260,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1ef02b531f00c45b94beeb2c79a8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7488511152284347813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147869502999765224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe26d595deae7cb4fb957f2d7bdeecc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  ballPrefab: {fileID: 8382356084179074782, guid: 8860b629be844684ea8af930d8bf1e86,
+    type: 3}
+  lineRenderer: {fileID: 7975385192167797066}
+  power: 10
+  maxDrag: 3
+  antiSuicideChecker: {fileID: 7022149015028438258, guid: ffb9c0004808fe0428fad1b280caa631,
+    type: 3}

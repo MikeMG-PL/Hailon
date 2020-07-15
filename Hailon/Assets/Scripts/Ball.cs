@@ -17,7 +17,7 @@ public class Ball : MonoBehaviour
             EnableGravity();
         }
 
-        else if (collisionsCount == collisionsToDestroy)
+        else if (collisionsCount >= collisionsToDestroy)
         {
             DestroyBall();
         }
@@ -25,7 +25,7 @@ public class Ball : MonoBehaviour
 
     void EnableGravity()
     {
-        GetComponent<Rigidbody2D>().gravityScale = 1.5f;
+        GetComponent<Rigidbody2D>().gravityScale = 1f;
         maxCollisionsReached = true;
     }
 
