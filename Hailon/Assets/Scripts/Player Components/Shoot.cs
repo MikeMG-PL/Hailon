@@ -67,6 +67,7 @@ public class Shoot : MonoBehaviour
         Vector3 force = dragStartPosition - dragReleasePosition;
         Vector3 clampedForce = Vector3.ClampMagnitude(force, maxDrag) * power;
 
+        newBall.GetComponent<Rigidbody2D>().isKinematic = false;
         ballRigidbody.AddForce(clampedForce, ForceMode2D.Impulse);
 
         StartCoroutine(SetUpNewBall());
@@ -74,29 +75,10 @@ public class Shoot : MonoBehaviour
 
     IEnumerator SetUpNewBall()
     {
-        yield return new WaitForSeconds(1f);
-        newBall = Instantiate(ballPrefab);
+        yield return new WaitForSeconds(0.5f);
+        newBall = Instantiate(ballPrefab, gameObject.transform);
+
+        newBall.GetComponent<Rigidbody2D>().isKinematic = true;
         ballRigidbody = newBall.GetComponent<Rigidbody2D>();
     }
 }
-
-/*public GameObject ball;
-public ParticleSystem particle;
-
-
-if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
-{
-    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    pos.z = 0;
-    Instantiate(particle, pos, particle.transform.rotation);
-}
-
-foreach (Touch touch in Input.touches)
-{
-    if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved)
-    {
-        Vector3 pos = Camera.main.ScreenToWorldPoint(touch.position);
-        pos.z = 0;
-        Instantiate(particle, pos, particle.transform.rotation);
-    }
-}*/

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3382483034612405700}
   - component: {fileID: 7588020227435461971}
   m_Layer: 0
-  m_Name: player
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,7 +183,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 10
+    numCapVertices: 15
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
