@@ -12,6 +12,7 @@ public class Shoot : MonoBehaviour
     public LineRenderer lineRenderer;
     public float power = 10f;
     public float maxDrag = 5f;
+    public float distanceFromPlayer = 1.5f;
 
     GameObject newBall;
     Touch touch;
@@ -84,7 +85,6 @@ public class Shoot : MonoBehaviour
 
         if (newBall != null)
         {
-            newBall.GetComponent<Rigidbody2D>().isKinematic = false;
             ballRigidbody.AddForce(clampedForce, ForceMode2D.Impulse);
             ballRigidbody.constraints = RigidbodyConstraints2D.None;
             ballRigidbody.GetComponent<CircleCollider2D>().isTrigger = false;
@@ -96,7 +96,7 @@ public class Shoot : MonoBehaviour
 
     void TouchSet()
     {
-        pos = new Vector2(transform.position.x, transform.position.y + 1.75f);
+        pos = new Vector2(transform.position.x, transform.position.y + distanceFromPlayer);
         dragStartPosition = pos;
 
         if (Input.touchCount == 0) return;
@@ -114,7 +114,6 @@ public class Shoot : MonoBehaviour
             cooldown = true;
             yield return new WaitForSeconds(0.5f);
             newBall = Instantiate(ballPrefab, gameObject.transform);
-            newBall.GetComponent<Rigidbody2D>().isKinematic = true;
             ballRigidbody = newBall.GetComponent<Rigidbody2D>();
             ballRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
             ballRigidbody.GetComponent<CircleCollider2D>().isTrigger = true;
