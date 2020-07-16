@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Resize { Decrease, Increase };
 
-public class ChangeObjectSize : MonoBehaviour
+public class ChangeBallSize : MonoBehaviour
 {
     public Resize resize;
 
