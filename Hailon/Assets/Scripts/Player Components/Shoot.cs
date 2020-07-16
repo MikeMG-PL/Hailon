@@ -96,7 +96,7 @@ public class Shoot : MonoBehaviour
 
     void TouchSet()
     {
-        pos = new Vector2(transform.position.x, transform.position.y + 1.75f);
+        pos = new Vector2(transform.position.x, transform.position.y + 1.5f);
         dragStartPosition = pos;
 
         if (Input.touchCount == 0) return;

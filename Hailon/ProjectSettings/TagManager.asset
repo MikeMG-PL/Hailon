@@ -14,7 +14,7 @@ TagManager:
   - UI
   - 
   - 
-  - PreventingSuicide
+  - 
   - 
   - 
   - 
@@ -42,6 +42,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Balls
+    uniqueID: 2397395441
+    locked: 0
   - name: Particles
     uniqueID: 431854429
+    locked: 0
+  - name: Player
+    uniqueID: 2056525763
+    locked: 0
+  - name: Boundaries
+    uniqueID: 3154565777
     locked: 0
