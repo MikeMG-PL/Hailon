@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
@@ -8,7 +9,18 @@ public class Ball : MonoBehaviour
     public int collisionsToEnableGravity = 3;
     public int collisionsToDestroy = 5;
 
+    public List<Vector3> sizes;
+    public int currentSize;
+
     bool maxCollisionsReached;
+
+    void Start()
+    {
+        for (int i = 0; i < sizes.Count; i++)
+        {
+            if (sizes[i] == Vector3.Scale(transform.localScale, transform.parent.localScale)) currentSize = i;
+        }
+    }
 
     void Update()
     {
