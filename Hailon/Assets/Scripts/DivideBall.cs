@@ -8,13 +8,14 @@ public class DivideBall : MonoBehaviour
     List<GameObject> clonesInCollider = new List<GameObject>();
     Vector3 pos1, pos2;
 
+    public ParticleSystem particle;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ball") && !collision.isTrigger)
         {
-            if (!CheckIfViable(collision.gameObject)) return;
-
-            CreateTwoClones(collision.gameObject);
+            if (CheckIfViable(collision.gameObject))
+                CreateTwoClones(collision.gameObject);
         }
     }
 
@@ -29,6 +30,7 @@ public class DivideBall : MonoBehaviour
         CreateBall(ball, velocity, pos2);
 
         Destroy(ball.gameObject);
+        HideSprite();
     }
 
     // Checking if the ball isn't just a clone that was spawned in the collider
@@ -72,6 +74,20 @@ public class DivideBall : MonoBehaviour
         if (collision.CompareTag("Ball") && !collision.isTrigger)
         {
             clonesInCollider.Remove(collision.gameObject);
+            HideSprite();
         }
+    }
+
+    void HideSprite()
+    {   
+        GetComponent<SpriteRenderer>().enabled = false;
+        StartCoroutine(Kill(0.1f));
+    }
+
+    IEnumerator Kill(float s)
+    {
+        Instantiate(particle, gameObject.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(s);
+        Destroy(gameObject);
     }
 }
