@@ -18,7 +18,15 @@ public class Ball : MonoBehaviour
     {
         for (int i = 0; i < sizes.Count; i++)
         {
-            if (sizes[i] == Vector3.Scale(transform.localScale, transform.parent.localScale)) currentSize = i;
+            if (transform.parent != null)
+            {
+                if (sizes[i] == Vector3.Scale(transform.localScale, transform.parent.localScale)) currentSize = i;
+            }
+
+            else
+            {
+                if (sizes[i] == transform.localScale) currentSize = i;
+            }
         }
     }
 
