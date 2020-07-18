@@ -20,7 +20,7 @@ public class ChangeBallSize : MonoBehaviour
                 ball.currentSize--;
             }
 
-            else if (resize == Resize.Increase && ball.currentSize != ball.sizes.Count)
+            else if (resize == Resize.Increase && ball.currentSize != ball.sizes.Count-1)
             {
                 Debug.Log(ball.currentSize);
                 ball.transform.localScale = ball.sizes[ball.currentSize + 1];

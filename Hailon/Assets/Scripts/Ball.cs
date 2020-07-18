@@ -13,6 +13,7 @@ public class Ball : MonoBehaviour
     public int currentSize;
 
     bool maxCollisionsReached;
+    float timer;
 
     void Start()
     {
@@ -24,15 +25,17 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
+        if(GetComponent<Rigidbody2D>().constraints != RigidbodyConstraints2D.FreezeAll)
+            timer += Time.deltaTime;
+
+        if (timer >= 10)
+            DestroyBall();
+
         if (!maxCollisionsReached && collisionsCount == collisionsToEnableGravity)
-        {
             EnableGravity();
-        }
 
         else if (collisionsCount >= collisionsToDestroy)
-        {
             DestroyBall();
-        }
     }
 
     void EnableGravity()
