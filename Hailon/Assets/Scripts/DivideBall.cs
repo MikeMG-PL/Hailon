@@ -6,7 +6,7 @@ using UnityEngine;
 public class DivideBall : MonoBehaviour
 {
     List<GameObject> clonesInCollider = new List<GameObject>();
-    Vector2 pos1, pos2;
+    Vector3 pos1, pos2;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -44,8 +44,8 @@ public class DivideBall : MonoBehaviour
 
     void CalculatePositions(Ball ball, Vector2 velocity)
     {
-        Vector3 pos1 = ball.transform.position;
-        Vector3 pos2 = ball.transform.position;
+        pos1 = ball.transform.position;
+        pos2 = ball.transform.position;
 
         if (Mathf.Abs(velocity.x) > Mathf.Abs(velocity.y))
         {
