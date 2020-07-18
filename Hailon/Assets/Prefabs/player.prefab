@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3382483034612405700}
   - component: {fileID: 7588020227435461971}
   - component: {fileID: 7488511152284347813}
+  - component: {fileID: 540378071253463721}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -278,3 +279,16 @@ MonoBehaviour:
   lineRenderer: {fileID: 7975385192167797066}
   power: 5
   maxDrag: 3.5
+  distanceFromPlayer: 1.5
+--- !u!114 &540378071253463721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147869502999765224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a26cbad76c946438fa181d94c0e055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
