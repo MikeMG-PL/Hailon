@@ -67,6 +67,19 @@ public class Shoot : MonoBehaviour
         draggingPosition = camera.ScreenToWorldPoint(touch.position);
         draggingPosition.z = 0;
 
+        if (Vector2.Distance(dragStartPosition, draggingPosition) < 0.605f)
+        {
+            lineRenderer.startColor = Color.red;
+            lineRenderer.endColor = Color.red;
+        }
+
+        else
+        {
+            lineRenderer.startColor = Color.green;
+            lineRenderer.endColor = Color.green;
+        }
+            
+
 
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(1, draggingPosition);
