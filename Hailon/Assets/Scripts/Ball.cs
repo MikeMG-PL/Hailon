@@ -31,10 +31,32 @@ public class Ball : MonoBehaviour
         }
     }
 
+    float smallTimer;
     void Update()
     {
-        if(GetComponent<Rigidbody2D>().constraints != RigidbodyConstraints2D.FreezeAll)
+        if (GetComponent<Rigidbody2D>().constraints != RigidbodyConstraints2D.FreezeAll)
+        {
             timer += Time.deltaTime;
+
+            if (GetComponent<Rigidbody2D>().velocity.magnitude <= 2 && timer <= 0.25f)
+                DestroyBall();
+            if (GetComponent<Rigidbody2D>().velocity.magnitude <= 2 && timer > 5f)
+                DestroyBall();
+
+            if (GetComponent<Rigidbody2D>().velocity.magnitude <= 4 && maxCollisionsReached)
+            {
+                smallTimer += Time.deltaTime;
+
+                if (smallTimer >= 1)
+                {
+                    DestroyBall();
+                    smallTimer = 0;
+                }
+            }
+            else
+                smallTimer = 0;
+        }
+
 
         if (timer >= 10)
             DestroyBall();
