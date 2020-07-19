@@ -81,6 +81,7 @@ public class DivideBall : MonoBehaviour
     void HideSprite()
     {   
         GetComponent<SpriteRenderer>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(true);
         StartCoroutine(Kill(0.1f));
     }
 
