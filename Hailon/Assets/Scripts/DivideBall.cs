@@ -5,81 +5,39 @@ using UnityEngine;
 
 public class DivideBall : MonoBehaviour
 {
-    List<GameObject> clonesInCollider = new List<GameObject>();
-    Vector3 pos1, pos2;
-
     public ParticleSystem particle;
+
+    Vector2 pos;
+    bool spawned;
+    GameObject instance;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ball") && !collision.isTrigger)
+        if (collision.CompareTag("Ball") && !spawned)
         {
-            if (CheckIfViable(collision.gameObject))
-                CreateTwoClones(collision.gameObject);
-        }
-    }
-
-    void CreateTwoClones(GameObject ballObject)
-    {
-        Ball ball = ballObject.GetComponent<Ball>();
-        Vector2 velocity = ballObject.GetComponent<Rigidbody2D>().velocity;
-
-        CalculatePositions(ball, velocity);
-
-        CreateBall(ball, velocity, pos1);
-        CreateBall(ball, velocity, pos2);
-
-        Destroy(ball.gameObject);
-        HideSprite();
-    }
-
-    // Checking if the ball isn't just a clone that was spawned in the collider
-    bool CheckIfViable(GameObject gameObject)
-    {
-        for (int i = 0; i < clonesInCollider.Count; i++)
-        {
-            if (gameObject == clonesInCollider[i]) return false;
-        }
-
-        return true;
-    }
-
-    void CalculatePositions(Ball ball, Vector2 velocity)
-    {
-        pos1 = ball.transform.position;
-        pos2 = ball.transform.position;
-
-        if (Mathf.Abs(velocity.x) > Mathf.Abs(velocity.y))
-        {
-            pos1.y += 0.05f;
-            pos2.y -= 0.05f;
-        }
-
-        else
-        {
-            pos1.x += 0.05f;
-            pos2.x -= 0.05f;
-        }
-    }
-
-    void CreateBall(Ball ball, Vector2 velocity, Vector3 pos)
-    {
-        GameObject cloneBall = Instantiate(ball.gameObject, pos, ball.transform.rotation);
-        clonesInCollider.Add(cloneBall);
-        cloneBall.GetComponent<Rigidbody2D>().velocity = velocity;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ball") && !collision.isTrigger)
-        {
-            clonesInCollider.Remove(collision.gameObject);
+            Divide(collision);
+            ResetCollisions(collision.gameObject, instance);
             HideSprite();
+            spawned = true;
         }
+    }
+
+    void Divide(Collider2D collision)
+    {
+        Vector2 velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+        CalculatePosition(collision.gameObject.GetComponent<Ball>(), velocity);
+        instance = Instantiate(collision.gameObject, pos, collision.transform.rotation);
+        instance.GetComponent<Rigidbody2D>().velocity = velocity;
+    }
+
+    void ResetCollisions(GameObject baseObject, GameObject instance)
+    {
+        baseObject.GetComponent<Ball>().ResetBall();
+        instance.GetComponent<Ball>().ResetBall();
     }
 
     void HideSprite()
-    {   
+    {
         GetComponent<SpriteRenderer>().enabled = false;
         transform.GetChild(0).gameObject.SetActive(true);
         StartCoroutine(Kill(0.1f));
@@ -90,5 +48,15 @@ public class DivideBall : MonoBehaviour
         Instantiate(particle, gameObject.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(s);
         Destroy(gameObject);
+    }
+
+    void CalculatePosition(Ball ball, Vector2 velocity)
+    {
+        pos = ball.transform.position;
+
+        if (Mathf.Abs(velocity.x) > Mathf.Abs(velocity.y))
+            pos.y -= 0.05f;
+        else
+            pos.x += 0.05f;
     }
 }

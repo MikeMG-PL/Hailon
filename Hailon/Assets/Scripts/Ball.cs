@@ -5,15 +5,15 @@ public class Ball : MonoBehaviour
 {
     public ParticleSystem ballDestroy;
 
-    public int collisionsCount;
+    protected int collisionsCount;
     public int collisionsToEnableGravity = 3;
     public int collisionsToDestroy = 5;
+    protected float timer;
 
     public List<Vector3> sizes;
     public int currentSize;
 
     bool maxCollisionsReached;
-    float timer;
 
     void Start()
     {
@@ -50,6 +50,17 @@ public class Ball : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().gravityScale = 1f;
         maxCollisionsReached = true;
+    }
+
+    public void ResetBall()
+    {
+        timer = 0;
+        collisionsCount = 0;
+    }
+
+    public void IncrementCollisionsCount()
+    {
+        collisionsCount++;
     }
 
     void DestroyBall()
