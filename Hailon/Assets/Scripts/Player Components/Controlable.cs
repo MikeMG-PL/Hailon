@@ -11,8 +11,6 @@ public class Controlable : MonoBehaviour
 
     void Update()
     {
-        ProperYPOS();
-        ProperXPOS();
         TouchSet();
 
         if (hit.collider == GetComponent<CapsuleCollider2D>())
@@ -21,14 +19,14 @@ public class Controlable : MonoBehaviour
                 touchStarted = true;
 
             if (touchStarted == true)
-                transform.position = new Vector2(touchPosition.x, touchPosition.y);
-            
-            ProperYPOS();
-            ProperXPOS();
-
-            if (touch.phase == TouchPhase.Ended)
-                touchStarted = false;
+                transform.position = new Vector2(touchPosition.x, transform.position.y);
         }
+
+        if (touch.phase == TouchPhase.Ended)
+            touchStarted = false;
+
+        //ProperYPOS();
+        ProperXPOS();
     }
 
     void ProperXPOS()
@@ -40,11 +38,11 @@ public class Controlable : MonoBehaviour
             transform.position = new Vector2(-2.2f, -4.35f);
     }
 
-    void ProperYPOS()
+    /*void ProperYPOS()
     {
         Vector2 position = new Vector2(transform.position.x, -4.35f);
         transform.position = position;
-    }
+    }*/
 
     void TouchSet()
     {

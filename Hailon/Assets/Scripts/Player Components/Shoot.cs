@@ -17,17 +17,12 @@ public class Shoot : MonoBehaviour
     GameObject newBall;
     Touch touch;
     Rigidbody2D ballRigidbody;
-    Vector3 dragStartPosition, dragReleasePosition, draggingPosition, touchPosition, pos;
+    Vector3 dragStartPosition, dragReleasePosition, draggingPosition, touchPosition;
     RaycastHit2D hit;
     bool dragging, cooldown;
 
     void Start()
     {
-        if (lineRenderer == null)
-        {
-            Debug.Log("You didn't set up line renderer");
-            lineRenderer = GetComponent<LineRenderer>();
-        }
         StartCoroutine(SetUpNewBall());
     }
 
@@ -36,28 +31,24 @@ public class Shoot : MonoBehaviour
         TouchSet();
 
         if (touch.phase == TouchPhase.Began && hit.collider != null && hit.transform.CompareTag("Ball"))
-        {
-            dragging = true;
             DragStart();
-        }
 
         if (dragging)
         {
             if (touch.phase == TouchPhase.Moved)
                 Dragging();
+
             else if (touch.phase == TouchPhase.Ended)
-            {
                 DragRelease();
-                dragging = false;
-            }
         }
 
         if (newBall != null)
-            newBall.transform.position = pos;
+            newBall.transform.position = dragStartPosition;
     }
 
     void DragStart()
     {
+        dragging = true;
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, dragStartPosition);
     }
@@ -78,8 +69,6 @@ public class Shoot : MonoBehaviour
             lineRenderer.startColor = new Color(0, 1, 0.455f);
             lineRenderer.endColor = new Color(0, 1, 0.455f);
         }
-            
-
 
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(1, draggingPosition);
@@ -87,11 +76,11 @@ public class Shoot : MonoBehaviour
 
     void DragRelease()
     {
+        dragging = false;
         lineRenderer.positionCount = 0;
 
         dragReleasePosition = camera.ScreenToWorldPoint(touch.position);
         dragReleasePosition.z = 0;
-
 
         Vector3 force = dragStartPosition - dragReleasePosition;
         Vector3 clampedForce = Vector3.ClampMagnitude(force, maxDrag) * power;
@@ -104,13 +93,13 @@ public class Shoot : MonoBehaviour
             newBall.transform.SetParent(null);
             newBall = null;
         }
+
         StartCoroutine(SetUpNewBall());
     }
 
     void TouchSet()
     {
-        pos = new Vector2(transform.position.x, transform.position.y + distanceFromPlayer);
-        dragStartPosition = pos;
+        dragStartPosition = new Vector2(transform.position.x, transform.position.y + distanceFromPlayer);
 
         if (Input.touchCount == 0) return;
 
