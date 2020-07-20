@@ -75,8 +75,8 @@ public class Shoot : MonoBehaviour
 
         else
         {
-            lineRenderer.startColor = Color.green;
-            lineRenderer.endColor = Color.green;
+            lineRenderer.startColor = new Color(0, 1, 0.455f);
+            lineRenderer.endColor = new Color(0, 1, 0.455f);
         }
             
 
