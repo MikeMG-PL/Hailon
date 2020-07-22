@@ -14,6 +14,7 @@ public class Ball : MonoBehaviour
     public int currentSize;
 
     bool maxCollisionsReached;
+    public bool dividerBall;
 
     void Start()
     {
@@ -38,7 +39,7 @@ public class Ball : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if (GetComponent<Rigidbody2D>().velocity.magnitude <= 3.025f && timer <= 0.25f)
+            if (GetComponent<Rigidbody2D>().velocity.magnitude <= 3.025f && timer <= 0.25f && !dividerBall)
                 Destroy(gameObject);
             if (GetComponent<Rigidbody2D>().velocity.magnitude <= 2 && timer > 5f)
                 DestroyBall();

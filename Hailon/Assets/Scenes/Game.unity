@@ -262,6 +262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Effector_Push (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3249229997909453785, guid: 643eb7c9141a01d4a9777cb3964db4d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 643eb7c9141a01d4a9777cb3964db4d6, type: 3}
 --- !u!1 &493703054
@@ -480,7 +485,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &917744759
 GameObject:
@@ -615,6 +620,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2289733874621604444, guid: 51955fb061c5834498a8219258c7a8e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5055803109654271003, guid: 51955fb061c5834498a8219258c7a8e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -727,7 +737,7 @@ PrefabInstance:
     - target: {fileID: 8631819694896366345, guid: 216f8e2b93d825446ad3cb9798aa2916,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8631819694896366345, guid: 216f8e2b93d825446ad3cb9798aa2916,
         type: 3}
@@ -758,6 +768,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2289733874621604444, guid: 51955fb061c5834498a8219258c7a8e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5055803109654271003, guid: 51955fb061c5834498a8219258c7a8e5,
         type: 3}
@@ -983,6 +998,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 2289733874621604444, guid: 51955fb061c5834498a8219258c7a8e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5055803109654271003, guid: 51955fb061c5834498a8219258c7a8e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1021,7 +1041,7 @@ PrefabInstance:
     - target: {fileID: 5055803109654271003, guid: 51955fb061c5834498a8219258c7a8e5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5055803109654271003, guid: 51955fb061c5834498a8219258c7a8e5,
         type: 3}
@@ -1070,7 +1090,7 @@ Transform:
   - {fileID: 1213131638}
   - {fileID: 1521215644}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521215643
 GameObject:
@@ -1341,6 +1361,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Effector_Push (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3249229997909453785, guid: 643eb7c9141a01d4a9777cb3964db4d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 643eb7c9141a01d4a9777cb3964db4d6, type: 3}
 --- !u!1001 &1962495868
@@ -1428,6 +1453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2289733874621604444, guid: 51955fb061c5834498a8219258c7a8e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5055803109654271003, guid: 51955fb061c5834498a8219258c7a8e5,
         type: 3}
@@ -1679,7 +1709,7 @@ PrefabInstance:
     - target: {fileID: 722076023709258126, guid: 643eb7c9141a01d4a9777cb3964db4d6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 722076023709258126, guid: 643eb7c9141a01d4a9777cb3964db4d6,
         type: 3}
@@ -1700,6 +1730,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Effector_Push
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249229997909453785, guid: 643eb7c9141a01d4a9777cb3964db4d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 643eb7c9141a01d4a9777cb3964db4d6, type: 3}

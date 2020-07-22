@@ -10,6 +10,8 @@ public class DivideBall : MonoBehaviour
     Vector2 pos;
     bool spawned;
     GameObject instance;
+    Vector2 velocity;
+    Vector2 force;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,17 +19,29 @@ public class DivideBall : MonoBehaviour
         {
             Divide(collision);
             ResetCollisions(collision.gameObject, instance);
-            HideSprite();
+            Kill();
             spawned = true;
         }
     }
 
     void Divide(Collider2D collision)
     {
-        Vector2 velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+        velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
         CalculatePosition(collision.gameObject.GetComponent<Ball>(), velocity);
         instance = Instantiate(collision.gameObject, pos, collision.transform.rotation);
+
+        DividePhysics(collision.gameObject);
+    }
+
+    void DividePhysics(GameObject collidingObject)
+    {
         instance.GetComponent<Rigidbody2D>().velocity = velocity;
+
+        instance.GetComponent<Ball>().dividerBall = true;
+        collidingObject.GetComponent<Ball>().dividerBall = true;
+
+        instance.GetComponent<Rigidbody2D>().AddForce(-force, ForceMode2D.Impulse);
+        collidingObject.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
     }
 
     void ResetCollisions(GameObject baseObject, GameObject instance)
@@ -36,17 +50,9 @@ public class DivideBall : MonoBehaviour
         instance.GetComponent<Ball>().ResetBall();
     }
 
-    void HideSprite()
-    {
-        GetComponent<SpriteRenderer>().enabled = false;
-        transform.GetChild(0).gameObject.SetActive(true);
-        StartCoroutine(Kill(0.1f));
-    }
-
-    IEnumerator Kill(float s)
+    void Kill()
     {
         Instantiate(particle, gameObject.transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(s);
         Destroy(gameObject);
     }
 
@@ -55,8 +61,16 @@ public class DivideBall : MonoBehaviour
         pos = ball.transform.position;
 
         if (Mathf.Abs(velocity.x) > Mathf.Abs(velocity.y))
+        {
             pos.y -= 0.05f;
+            force.y -= 0.75f;
+        }
+
         else
+        {
             pos.x += 0.05f;
+            force.x += 0.75f;
+        }
+
     }
 }

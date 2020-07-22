@@ -91,6 +91,7 @@ public class Shoot : MonoBehaviour
             ballRigidbody.constraints = RigidbodyConstraints2D.None;
             ballRigidbody.GetComponent<CircleCollider2D>().isTrigger = false;
             newBall.transform.SetParent(null);
+            newBall.GetComponent<CapsuleCollider2D>().enabled = false;
             newBall = null;
         }
 
