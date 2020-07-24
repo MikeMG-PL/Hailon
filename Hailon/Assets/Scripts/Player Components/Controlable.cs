@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Controlable : MonoBehaviour
 {
@@ -46,11 +47,15 @@ public class Controlable : MonoBehaviour
 
     void TouchSet()
     {
-        if (Input.touchCount == 0) return;
+        if (InputManager.IsMovementAllowed())
+        {
+            if (Input.touchCount == 0) return;
 
-        touch = Input.GetTouch(0);
-        touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-        touchPosition.z = 0;
-        hit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
+            touch = Input.GetTouch(0);
+            touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            touchPosition.z = 0;
+            hit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
+        }
+
     }
 }

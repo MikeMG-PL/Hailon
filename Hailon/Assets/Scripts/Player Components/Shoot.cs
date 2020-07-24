@@ -28,30 +28,34 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
-        TouchSet();
-
-        if (touch.phase == TouchPhase.Began && hit.collider != null && hit.transform.CompareTag("Ball"))
-            DragStart();
-
-        if (dragging)
+        if (InputManager.IsMovementAllowed())
         {
-            if (touch.phase == TouchPhase.Moved)
-                Dragging();
+            TouchSet();
 
-            else if (touch.phase == TouchPhase.Ended)
-                DragRelease();
+            if (touch.phase == TouchPhase.Began && hit.collider != null && hit.transform.CompareTag("Ball"))
+                DragStart();
+
+            if (dragging)
+            {
+                if (touch.phase == TouchPhase.Moved)
+                    Dragging();
+
+                else if (touch.phase == TouchPhase.Ended)
+                    DragRelease();
+            }
+
+            if (newBall != null)
+                newBall.transform.position = dragStartPosition;
         }
 
-        if (newBall != null)
-            newBall.transform.position = dragStartPosition;
+        void DragStart()
+        {
+            dragging = true;
+            lineRenderer.positionCount = 1;
+            lineRenderer.SetPosition(0, dragStartPosition);
+        }
     }
 
-    void DragStart()
-    {
-        dragging = true;
-        lineRenderer.positionCount = 1;
-        lineRenderer.SetPosition(0, dragStartPosition);
-    }
 
     void Dragging()
     {

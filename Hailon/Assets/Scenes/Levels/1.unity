@@ -1770,16 +1770,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: _SceneEditSpace
       objectReference: {fileID: 0}
-    - target: {fileID: 3440189522754703927, guid: 4bc4987782cd56f4290a5899991925e7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7970531165743109002, guid: 4bc4987782cd56f4290a5899991925e7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bc4987782cd56f4290a5899991925e7, type: 3}
 --- !u!1001 &2504833886218688459
