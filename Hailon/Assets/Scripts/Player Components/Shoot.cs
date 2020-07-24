@@ -23,7 +23,7 @@ public class Shoot : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SetUpNewBall());
+        StartCoroutine(SetUpNewBall(0));
     }
 
     void Update()
@@ -99,7 +99,7 @@ public class Shoot : MonoBehaviour
             newBall = null;
         }
 
-        StartCoroutine(SetUpNewBall());
+        StartCoroutine(SetUpNewBall(0.5f));
     }
 
     void TouchSet()
@@ -114,12 +114,12 @@ public class Shoot : MonoBehaviour
         hit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
     }
 
-    IEnumerator SetUpNewBall()
+    IEnumerator SetUpNewBall(float time)
     {
         if (!cooldown)
         {
             cooldown = true;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(time);
             newBall = Instantiate(ballPrefab, gameObject.transform);
             ballRigidbody = newBall.GetComponent<Rigidbody2D>();
             ballRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;

@@ -6,12 +6,22 @@ public class Notifications : MonoBehaviour
 {
     static bool isPaused = false;
     static bool isPlaying = true;
+    static bool isPlayerKilled = false;
+    static bool isPlayerAlive = true;
 
     public enum Notification
     {
         GamePaused,
-        GamePlaying
+        GamePlaying,
+        PlayerKilled,
+        PlayerAlive
     };
+
+    private void OnLevelWasLoaded(int level)
+    {
+        Notify(Notification.PlayerAlive);
+        Notify(Notification.GamePlaying);
+    }
 
     public static bool IsPaused()
     {
@@ -21,6 +31,16 @@ public class Notifications : MonoBehaviour
     public static bool IsPlaying()
     {
         return isPlaying;
+    }
+
+    public static bool IsPlayerKilled()
+    {
+        return isPlayerKilled;
+    }
+
+    public static bool IsPlayerAlive()
+    {
+        return isPlayerAlive;
     }
 
     public static void Notify(Notification notification)
@@ -35,6 +55,16 @@ public class Notifications : MonoBehaviour
             case Notification.GamePlaying:
                 isPaused = false;
                 isPlaying = true;
+                break;
+
+            case Notification.PlayerKilled:
+                isPlayerKilled = true;
+                isPlayerAlive = false;
+                break;
+
+            case Notification.PlayerAlive:
+                isPlayerKilled = false;
+                isPlayerAlive = true;
                 break;
         }
     }

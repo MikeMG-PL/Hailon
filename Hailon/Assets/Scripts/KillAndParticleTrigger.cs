@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Notification = Notifications.Notification;
 
 public class KillAndParticleTrigger : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class KillAndParticleTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball") && !godMode)
         {
+            if (transform.CompareTag("Player"))
+                Notifications.Notify(Notification.PlayerKilled);
+
             Instantiate(particle, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

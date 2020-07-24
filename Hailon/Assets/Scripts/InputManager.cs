@@ -12,6 +12,11 @@ public class InputManager : MonoBehaviour
         No
     };
 
+    private void OnLevelWasLoaded(int level)
+    {
+        AllowMovement(MovementAllowed.Yes);
+    }
+
     public static bool IsMovementAllowed()
     {
         return movementAllowed;
