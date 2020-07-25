@@ -7,9 +7,14 @@ public class DeathRestart : MonoBehaviour
 {
     float timer;
 
+    private void Awake()
+    {
+        timer = 0;
+    }
+
     void Update()
     {
-        if (Notifications.IsPlayerKilled())
+        if (Notifications.IsPlayerKilled() && SceneManager.GetActiveScene().name != "Menu")
         {
             Restart();
         }

@@ -6,14 +6,9 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject panel, cornerPauseButton, resumeButton, settingsButton, quitButton;
 
-    void Start()
-    {
-        Time.timeScale = 1;
-        ShowGame();
-    }
-
     void Awake()
     {
+        Time.timeScale = 1;
         ShowGame();    
     }
 

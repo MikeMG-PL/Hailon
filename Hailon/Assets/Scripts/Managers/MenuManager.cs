@@ -9,14 +9,9 @@ public class MenuManager : MonoBehaviour
 
     public GameObject mainMenu, levelMenu, customize, settings;
 
-    void Start()
-    {
-        Time.timeScale = 1;
-        MainMenu();    
-    }
-
     void Awake()
     {
+        Time.timeScale = 1;
         MainMenu();
     }
 
