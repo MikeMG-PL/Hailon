@@ -23,7 +23,7 @@ public class Shoot : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SetUpNewBall(0));
+        BallCreation();
     }
 
     void Update()
@@ -120,11 +120,16 @@ public class Shoot : MonoBehaviour
         {
             cooldown = true;
             yield return new WaitForSeconds(time);
-            newBall = Instantiate(ballPrefab, gameObject.transform);
-            ballRigidbody = newBall.GetComponent<Rigidbody2D>();
-            ballRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-            ballRigidbody.GetComponent<CircleCollider2D>().isTrigger = true;
+            BallCreation();
             cooldown = false;
         }
+    }
+
+    void BallCreation()
+    {
+        newBall = Instantiate(ballPrefab, gameObject.transform);
+        ballRigidbody = newBall.GetComponent<Rigidbody2D>();
+        ballRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        ballRigidbody.GetComponent<CircleCollider2D>().isTrigger = true;
     }
 }

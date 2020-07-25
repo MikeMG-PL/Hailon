@@ -41,6 +41,7 @@ public class ButtonManager : MonoBehaviour
             case true:
                 Notifications.Notify(Notification.GamePlaying);
                 InputManager.AllowMovement(MovementAllowed.Yes);
+                GetComponent<PauseMenu>().ShowGame();
                 Time.timeScale = 1;
 
                 break;
@@ -48,7 +49,9 @@ public class ButtonManager : MonoBehaviour
             case false:
                 InputManager.AllowMovement(MovementAllowed.No);
                 Notifications.Notify(Notification.GamePaused);
+                GetComponent<PauseMenu>().ShowPauseMenu();
                 Time.timeScale = 0;
+                
                 break;
         }
     }

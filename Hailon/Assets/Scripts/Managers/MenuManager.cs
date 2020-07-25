@@ -11,7 +11,13 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         MainMenu();    
+    }
+
+    void OnLevelWasLoaded(int level)
+    {
+        MainMenu();
     }
 
     public void MainMenu()
