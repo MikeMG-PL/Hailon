@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
         MainMenu();    
     }
 
-    void OnLevelWasLoaded(int level)
+    void Awake()
     {
         MainMenu();
     }

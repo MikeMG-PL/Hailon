@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour
         ShowGame();
     }
 
-    void OnLevelWasLoaded(int level)
+    void Awake()
     {
         ShowGame();    
     }

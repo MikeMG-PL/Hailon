@@ -17,7 +17,7 @@ public class Notifications : MonoBehaviour
         PlayerAlive
     };
 
-    private void OnLevelWasLoaded(int level)
+    private void Awake()
     {
         Notify(Notification.PlayerAlive);
         Notify(Notification.GamePlaying);

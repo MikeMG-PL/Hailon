@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
         No
     };
 
-    private void OnLevelWasLoaded(int level)
+    private void Awake()
     {
         AllowMovement(MovementAllowed.Yes);
     }
