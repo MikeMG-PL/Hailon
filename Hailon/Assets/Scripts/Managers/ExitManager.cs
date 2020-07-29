@@ -11,7 +11,7 @@ public class ExitManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                SceneManager.LoadSceneAsync("Menu");
+                GameManager.gameManager.LoadScene("Menu", SceneManager.GetActiveScene().name);
             }
         }
         else if (Input.GetKeyDown(KeyCode.Escape))

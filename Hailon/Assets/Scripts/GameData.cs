@@ -8,8 +8,8 @@ public class GameData
     private int level;
     private int money;
 
-    public GameData()
+    public GameData(PlayerData player)
     {
-        // level = Player.level; itp.
+        level = player.level;
     }
 }

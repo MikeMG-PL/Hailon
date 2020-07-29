@@ -26,7 +26,7 @@ public class DeathRestart : MonoBehaviour
 
         if (timer >= 2)
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+            GameManager.gameManager.LoadScene(SceneManager.GetActiveScene().name, SceneManager.GetActiveScene().name);
         }
     }
 }

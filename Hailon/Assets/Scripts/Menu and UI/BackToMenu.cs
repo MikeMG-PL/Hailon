@@ -7,7 +7,6 @@ public class BackToMenu : MonoBehaviour
 {
     public void BackMenu()
     {
-        SceneManager.LoadSceneAsync("Menu");
-
+        GameManager.gameManager.LoadScene("Menu", SceneManager.GetActiveScene().name);
     }
 }

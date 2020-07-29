@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    public static void SaveProgress()
+    public static void SaveProgress(PlayerData player)
     {
         string path = Path.Combine(Application.persistentDataPath, "data.dat");
 
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Create);
-        GameData data = new GameData();
+        GameData data = new GameData(player);
 
         formatter.Serialize(stream, data);
         stream.Close();

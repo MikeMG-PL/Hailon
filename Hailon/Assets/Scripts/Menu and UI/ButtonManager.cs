@@ -60,6 +60,6 @@ public class ButtonManager : MonoBehaviour
 
     public void LoadLevel(int levelNumber)
     {
-        SceneManager.LoadSceneAsync(levelNumber.ToString());
+        GameManager.gameManager.LoadScene(levelNumber.ToString(), SceneManager.GetActiveScene().name);
     }
 }

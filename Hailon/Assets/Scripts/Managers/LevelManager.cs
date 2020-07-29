@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        currentLevel = GameManager.gameManager.GetComponent<PlayerData>().level;
+
         foreach (Transform lvl in transform)
         {
             levels.Add(lvl.gameObject);
