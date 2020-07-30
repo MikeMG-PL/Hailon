@@ -25,6 +25,7 @@ public class MenuManager : MonoBehaviour
 
     public void LevelMenu()
     {
+        SoundManager.soundManager.Click();
         mainMenu.SetActive(false);
         levelMenu.SetActive(true);
         customize.SetActive(false);
@@ -33,6 +34,7 @@ public class MenuManager : MonoBehaviour
 
     public void Customize()
     {
+        SoundManager.soundManager.Click();
         mainMenu.SetActive(false);
         levelMenu.SetActive(false);
         customize.SetActive(true);
@@ -41,6 +43,7 @@ public class MenuManager : MonoBehaviour
 
     public void Settings()
     {
+        SoundManager.soundManager.Click();
         mainMenu.SetActive(false);
         levelMenu.SetActive(false);
         customize.SetActive(false);

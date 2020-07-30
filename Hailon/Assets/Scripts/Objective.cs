@@ -13,6 +13,7 @@ public class Objective : MonoBehaviour
             Instantiate(finishHit, gameObject.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
             Debug.Log("You've won!");
+            Vibration.Vibrate(100);
         }
     }
 }
