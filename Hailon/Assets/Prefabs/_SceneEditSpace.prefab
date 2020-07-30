@@ -599,6 +599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 657042901703908944}
   - component: {fileID: 1246798618451450486}
+  - component: {fileID: 1156261023400177608}
   m_Layer: 0
   m_Name: _SceneEditSpace
   m_TagString: Untagged
@@ -638,8 +639,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelData: {fileID: 0}
-  levelFinishedUI: {fileID: 0}
+  levelFinishedUI: {fileID: 2984969492936710148}
   objective: {fileID: 0}
+--- !u!114 &1156261023400177608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440189522754703927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36a622983aead248b6f7fcfb07fa431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 1
+  finished: 0
 --- !u!1 &3780347455652956431
 GameObject:
   m_ObjectHideFlags: 0
