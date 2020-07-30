@@ -1,25 +1,32 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public int currentLevel = 1;
-    public List<GameObject> levels = new List<GameObject>();
+    [HideInInspector]
+    public LevelData levelData;
+    public GameObject levelFinishedUI;
+    public Objective objective;
 
     private void Start()
     {
-        currentLevel = GameManager.gameManager.GetComponent<PlayerData>().level;
+        if (objective == null) Debug.LogError("You need to assign Finish object (object with objective script)");
 
-        foreach (Transform lvl in transform)
-        {
-            levels.Add(lvl.gameObject);
-        }
+        levelData = GetComponent<LevelData>();
+        levelData.index = Convert.ToInt32(SceneManager.GetActiveScene().name);
+        objective.ObjectiveReached += OnObjectiveReached;
+    }
 
-        for (int i = 1; i <= currentLevel; i++)
-        {
-            levels[i - 1].GetComponent<Button>().interactable = true;
-        }
+    private void OnObjectiveReached(object sender, System.EventArgs e)
+    {
+        levelData.finished = true;
+        levelFinishedUI.SetActive(true);
+
+        PlayerData playerData = GameManager.gameManager.GetComponent<PlayerData>();
+        if (playerData.level < levelData.index) playerData.level = levelData.index;
+        SaveManager.SaveProgress(playerData);
     }
 }

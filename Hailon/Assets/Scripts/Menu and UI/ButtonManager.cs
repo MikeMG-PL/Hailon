@@ -56,6 +56,16 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
+    public void NextLevel()
+    {
+        GameManager.gameManager.LoadScene(SceneManager.GetSceneAt(SceneManager.GetActiveScene().buildIndex + 1).name, SceneManager.GetActiveScene().name);
+    }
+
+    public void BackToMenu()
+    {
+        GameManager.gameManager.LoadScene("Menu", SceneManager.GetActiveScene().name);
+    }
+
     ////////////////////////
 
     public void LoadLevel(int levelNumber)

@@ -12,25 +12,25 @@ public class SaveManager : MonoBehaviour
 
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Create);
-        GameData data = new GameData(player);
+        SaveData data = new SaveData(player);
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static GameData LoadProgress()
+    public static SaveData LoadProgress()
     {
         string path = Path.Combine(Application.persistentDataPath, "data.dat");
-
+        Debug.Log(path);
         if (!File.Exists(path))
         {
-            Debug.LogError("Saved data file doesn't exist.");
+            Debug.LogWarning("Saved data file doesn't exist.");
             return null;
         }
 
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Open);
-        GameData data = (GameData)formatter.Deserialize(stream);
+        SaveData data = (SaveData)formatter.Deserialize(stream);
 
         stream.Close();
         return data;

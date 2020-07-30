@@ -9,28 +9,42 @@ public class GameManager : MonoBehaviour
 
     bool gameStart;
 
-    private void Awake()
+    void Awake()
     {
         if (!gameStart)
         {
             gameManager = this;
             SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
             gameStart = true;
+
+            LoadData();
         }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
-    {
-        if (scene.name == "NeverUnload") return;
-
-        SceneManager.SetActiveScene(scene);
     }
 
     public void LoadScene(string sceneToLoad, string currentScene)
     {
         SceneManager.UnloadSceneAsync(currentScene);
         SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
+    {
+        if (scene.name == "NeverUnload") return;
+
+        SceneManager.SetActiveScene(scene);
+    }
+
+    void LoadData()
+    {
+        SaveData data = SaveManager.LoadProgress();
+        if (data == null) return;
+        GetComponent<PlayerData>().level = data.level;
+    }
+
+    void OnApplicationQuit()
+    {
+        SaveManager.SaveProgress(GetComponent<PlayerData>());
     }
 }

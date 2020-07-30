@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class GameData
+public class SaveData
 {
-    private int level;
-    private int money;
+    public int level;
+    public int money;
 
-    public GameData(PlayerData player)
+    public SaveData(PlayerData player)
     {
         level = player.level;
     }
