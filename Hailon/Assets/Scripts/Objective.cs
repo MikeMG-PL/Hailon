@@ -14,6 +14,7 @@ public class Objective : MonoBehaviour
         {
             Instantiate(finishHit, gameObject.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
+            Vibration.Vibrate(100);
         }
     }
 

@@ -17,25 +17,30 @@ public class ButtonManager : MonoBehaviour
     public void Play()
     {
         menuManager.LevelMenu();
+        SoundManager.soundManager.Click();
     }
 
     public void Customize()
     {
+        SoundManager.soundManager.Click();
         return;
     }
 
     public void Settings()
     {
+        SoundManager.soundManager.Click();
         return;
     }
 
     public void Quit()
     {
+        SoundManager.soundManager.Click();
         Application.Quit();
     }
 
     public void Pause()
     {
+        SoundManager.soundManager.Click();
         switch (Notifications.IsPaused())
         {
             case true:

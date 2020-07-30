@@ -12,8 +12,11 @@ public class KillAndParticle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball") && !godMode)
         {
-            if(transform.CompareTag("Player"))
+            if (transform.CompareTag("Player"))
+            {
                 Notifications.Notify(Notification.PlayerKilled);
+                Vibration.Vibrate(100);
+            }
 
             Instantiate(particle, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
