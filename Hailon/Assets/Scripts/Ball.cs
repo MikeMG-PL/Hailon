@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     protected float timer;
 
     public List<Vector3> sizes;
+    Rigidbody2D r;
     public int currentSize;
 
     bool maxCollisionsReached;
@@ -18,6 +19,8 @@ public class Ball : MonoBehaviour
 
     void Start()
     {
+        r = GetComponent<Rigidbody2D>();
+
         for (int i = 0; i < sizes.Count; i++)
         {
             if (transform.parent != null)
@@ -35,13 +38,13 @@ public class Ball : MonoBehaviour
     float smallTimer;
     void Update()
     {
-        if (GetComponent<Rigidbody2D>().constraints != RigidbodyConstraints2D.FreezeAll)
+        if (r.constraints != RigidbodyConstraints2D.FreezeAll)
         {
             timer += Time.deltaTime;
 
-            if (GetComponent<Rigidbody2D>().velocity.magnitude <= 3.025f && timer <= 0.25f && !dividerBall)
+            if (r.velocity.magnitude <= 3.025f && timer <= 0.25f && !dividerBall)
                 Destroy(gameObject);
-            if (GetComponent<Rigidbody2D>().velocity.magnitude <= 2 && timer > 5f)
+            if (r.velocity.magnitude <= 2 && timer > 5f)
                 DestroyBall();
 
             if (GetComponent<Rigidbody2D>().velocity.magnitude <= 4 && maxCollisionsReached)
@@ -71,7 +74,7 @@ public class Ball : MonoBehaviour
 
     void EnableGravity()
     {
-        GetComponent<Rigidbody2D>().gravityScale = 1f;
+        r.gravityScale = 1f;
         maxCollisionsReached = true;
     }
 
