@@ -34,6 +34,7 @@ public class MenuManager : MonoBehaviour
         {
             levels[i - 1].GetComponent<Button>().interactable = true;
         }
+
     }
 
     public void MainMenu()

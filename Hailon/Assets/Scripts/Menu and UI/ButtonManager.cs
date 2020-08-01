@@ -63,7 +63,9 @@ public class ButtonManager : MonoBehaviour
 
     public void NextLevel()
     {
-        GameManager.gameManager.LoadScene(SceneManager.GetSceneAt(SceneManager.GetActiveScene().buildIndex + 1).name, SceneManager.GetActiveScene().name);
+        int levelNumber;
+        levelNumber = int.Parse(SceneManager.GetActiveScene().name);
+        GameManager.gameManager.LoadScene((levelNumber + 1).ToString(), SceneManager.GetActiveScene().name);
     }
 
     public void BackToMenu()
