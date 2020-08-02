@@ -39,6 +39,7 @@ public class MenuManager : MonoBehaviour
 
     public void MainMenu()
     {
+        SoundManager.soundManager.Click();
         mainMenu.SetActive(true);
         levelMenu.SetActive(false);
         customize.SetActive(false);
