@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
     void Awake()
     {
         soundManager = this;
+        Vibration.Vibrate(0);
     }
 
     public void Click()
